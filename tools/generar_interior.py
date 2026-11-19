@@ -23,8 +23,13 @@ os.makedirs(dest, exist_ok=True)
 open(os.path.join(dest, 'index.html'), 'w', encoding='utf-8').write(s)
 for d in ('data', 'img', 'img/p'): os.makedirs(os.path.join(dest, d), exist_ok=True)
 for f in ('data/tonos.json', 'data/disponibles.json', 'img/opi.svg', 'img/opi.png',
-          'img/outlet.jpg', 'img/outlet-interior.mp4'):
+          'img/outlet.jpg', 'img/outlet-interior.mp4', 'sw.js',
+          'img/app-192.png', 'img/app-512.png', 'img/app-mask-512.png', 'img/app-180.png'):
     shutil.copy2(os.path.join(base, f), os.path.join(dest, f))
+# manifiesto de la app instalable, con el nombre del interior
+import json
+m = json.load(open(os.path.join(base, 'manifest.webmanifest'), encoding='utf-8')); m['name'] = 'OPI · Catálogo Interior del país'
+json.dump(m, open(os.path.join(dest, 'manifest.webmanifest'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 # video de ayuda grabado sobre la página del interior
 shutil.copy2(os.path.join(base, 'img/ayuda-interior.mp4'), os.path.join(dest, 'img/ayuda.mp4'))
 shutil.copy2(os.path.join(base, 'img/ayuda-interior.jpg'), os.path.join(dest, 'img/ayuda.jpg'))

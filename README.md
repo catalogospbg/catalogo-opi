@@ -3,6 +3,7 @@
 Carta de productos OPI disponibles para profesionales: filtro por línea y color, carrito con cantidades, pedido por WhatsApp y PDF del pedido.
 
 - `index.html`: la página.
+- `sw.js`, `manifest.webmanifest`, `img/app-*.png`: carga siempre la última versión de la página y permite instalarla como app. En cada cambio de `index.html` hay que subir el valor de `<meta name="build">`: es lo que hace que las pestañas abiertas se recarguen solas.
 - `data/tonos.json`: catálogo (código GCI, código corto, nombre, línea, familia de color).
 - `data/disponibles.json`: productos con stock y precio de lista general con impuestos. Es el único archivo que cambia en cada actualización.
 - `img/`: hojas de imágenes de los frascos.
